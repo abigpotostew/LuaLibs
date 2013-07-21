@@ -4,6 +4,8 @@
 -- to the metatable, so all functions should be called using
 -- the colon syntax on your heap.
 
+-- TODO: implement a min / max priority queue
+
 local Heap = {}
 
 Heap.mt = {} --metatable
@@ -22,12 +24,6 @@ function Heap.new(isMax,data)
 		heap[i] = data[i]
 	end
 	return heap
-end
-
-table.exchange = function(t,a,b)
-	local tmp = t[a]
-	t[a]=t[b]
-	t[b] = tmp
 end
 
 function Heap.prototype.parent(self,i)

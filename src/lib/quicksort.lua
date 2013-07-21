@@ -1,13 +1,5 @@
 -- Adds quicksort to the lua stdlib table library
 
-if table.exchange == nil then
-	table.exchange = function(t, a, b)
-		local tmp = t[a]
-		t[a] = t[b]
-		t[b] = tmp
-	end
-end
-
 local function Partition(A, p, r)
 	local x = A[r]
 	local i = p - 1
