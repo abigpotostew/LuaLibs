@@ -1,5 +1,7 @@
 -- Adds quicksort to the lua stdlib table library
 
+require 'src.util'
+
 local function Partition(A, p, r)
 	local x = A[r]
 	local i = p - 1

@@ -6,6 +6,8 @@
 
 -- TODO: implement a min / max priority queue
 
+require 'src.util'
+
 local Heap = {}
 
 Heap.mt = {} --metatable
@@ -27,18 +29,15 @@ function Heap.new(isMax,data)
 end
 
 function Heap.prototype.parent(self,i)
-	return math.max(1,math.floor(i/2)) --TODO right shift bit
-	--return math.max(1,bit32.rshift(i,1))
+	return math.max(1,bit32 and bit32.rshift(i,1) or math.floor(i/2))
 end
 
 function Heap.prototype.left(self,i)
-	return math.max(1,2*i) --TODO: left shift the bits
-	--return math.max(1,bit32.lshift(i,1))
+	return math.max(1,bit32 and bit32.lshift(i,1) or 2*i)
 end
 
 function Heap.prototype.right(self,i)
-	return math.max(1,2*i+1) --TODO: left shift the bits then add one
-	--return math.max(1,bit32.lshift(i,1)+1)
+	return math.max(1,bit32 and (bit32.lshift(i,1)+1) or (2*i+1))
 end
 
 function Heap.prototype.minHeapify(self,i)

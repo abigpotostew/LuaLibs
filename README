@@ -2,6 +2,11 @@ This is an assortment of common algorithms implemented in Lua v5.0+ created whil
 
 These algorithms work just fine, but I created them as an educational excersize for myself. There's probably an identical set of more polished and optimized algorithms somewhere out. Just FYI!
 
+DEPENDENCIES:
+NOPE: http://bitop.luajit.org/ -- Slightly more attractive bitwise support than lua 5.2's implementation
+
 By Stewart Bracken
 
 stewart.bracken.bz
+
+
