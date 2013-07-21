@@ -1,0 +1,7 @@
+This is an assortment of common algorithms implemented in Lua v5.0+ created while reading through Introduction to Algorithms Third Edition by Cormen, Leiserson, Rivest, and Stein.
+
+These algorithms work just fine, but I created them as an educational excersize for myself. There's probably an identical set of more polished and optimized algorithms somewhere out. Just FYI!
+
+By Stewart Bracken
+
+stewart.bracken.bz
