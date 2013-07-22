@@ -4,12 +4,9 @@
 --require 'src.tests.quicksorttest'
 --require 'src.tests.heaptest'
 
---require 'src.tests.rsatest'
 
 
-local bc = require 'bc'
-
-print(bc.digits(123))
+require 'src.tests.rsatest'
 
 
 os.exit()
