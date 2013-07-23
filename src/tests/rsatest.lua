@@ -45,13 +45,10 @@ end
 
 local bigprimes = {}
 while #bigprimes < 2 do
-	local n = math.random(2^32-1)--bc.random_digit(encryption_strength,encryption_strength)
+	local n = math.random(2^32-1)
 	if n%2==0 then n = n-1 end
 	if RSA.is_prime(n) then
-		print('PRIME!!',n)
-		--if RSA.is_prime(n) then 
-			table.insert(bigprimes,n) 
-			--end
+		table.insert(bigprimes,n)
 	end
 end
 print('***** Number Primes found:')
@@ -59,22 +56,23 @@ for i=1,#bigprimes do
 	print(i,bigprimes[i])
 end
 
+local encryption_strength = 64 --starts slowing down at 64
 local function find_prime()
 	local digits = encryption_strength
 	while true do
 		local n = bc.random_digit(digits,digits)
 		if n%2==0 then n = n-1 end --make it odd
 		if RSA.is_prime(n) then
-			return n
+			coroutine.yield(n) --return with the prime!
 		end
-		coroutine.yield()
+		coroutine.yield(nil) --no prime this time around
 	end
 end
 
-local encryption_strength = 8
+
 local num_primes = 2
 local co = {}
-for i=1,num_primes do 
+for i=1,num_primes*5 do --many threads for each prime, probably not any faster doing this, but learned about coroutines in the process!
 	co[i]=coroutine.create(function() find_prime() end)
 end
 
@@ -83,7 +81,7 @@ while #bigprimes < num_primes do
 	for i=1,#co do
 		if coroutine.status(co[i])~='dead' then
 			local s, prime = coroutine.resume(co[i])
-			if s == false then print(s,prime) table.insert(bigprimes,prime) end
+			if prime~=nil then table.insert(bigprimes,prime) end
 		end
 	end
 end
