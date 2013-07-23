@@ -1,6 +1,6 @@
 #LuaLibs #
 ##By Stewart Bracken ##
-###[stewart.bracken.bz](stewart.bracken.bz) ###
+###[stewart.bracken.bz](http://stewart.bracken.bz) ###
 
 This is an assortment of common algorithms implemented in Lua v5.2 created while reading through Introduction to Algorithms Third Edition by Cormen, Leiserson, Rivest, and Stein.
 
