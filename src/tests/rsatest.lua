@@ -56,12 +56,12 @@ for i=1,#bigprimes do
 	print(i,bigprimes[i])
 end
 
-local encryption_strength = 64 --starts slowing down at 64
+local encryption_strength = 1024 --starts slowing down at 64
 local function find_prime()
 	local digits = encryption_strength
 	while true do
 		local n = bc.random_digit(digits,digits)
-		if n%2==0 then n = n-1 end --make it odd
+		if n%2==0 then n = n+1 end --make it odd
 		if RSA.is_prime(n) then
 			coroutine.yield(n) --return with the prime!
 		end
@@ -72,7 +72,7 @@ end
 
 local num_primes = 2
 local co = {}
-for i=1,num_primes*5 do --many threads for each prime, probably not any faster doing this, but learned about coroutines in the process!
+for i=1,num_primes do --many threads for each prime, probably not any faster doing this, but learned about coroutines in the process!
 	co[i]=coroutine.create(function() find_prime() end)
 end
 
